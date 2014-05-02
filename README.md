@@ -5,7 +5,7 @@ Two Web Service samples for the Web Engineering lecture series 2014 at Vienna Un
 
 ###we-restful-service
 
-An example for a RESTful student Web Services, based on JAX-RS.
+An example for a RESTful student Web Service, based on JAX-RS.
 
 
 ###we-webservice
