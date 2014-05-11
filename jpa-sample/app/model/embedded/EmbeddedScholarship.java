@@ -1,20 +1,16 @@
-package model;
+package model.embedded;
 
-import javax.persistence.*;
+import javax.persistence.Embeddable;
 
 /**
- *  Scholarship domain class
+ * Scholarship domain class using embedded concepts
  */
-@Entity
-public class Scholarship extends BaseEntity {
+@Embeddable
+public class EmbeddedScholarship {
 
     private String description;
 
     private Integer amount;
-
-    @JoinColumn(name = "student_id", unique = true)
-    @OneToOne
-    private Student grantedTo;
 
     public String getDescription() {
         return description;
@@ -32,11 +28,4 @@ public class Scholarship extends BaseEntity {
         this.amount = amount;
     }
 
-    public Student getGrantedTo() {
-        return grantedTo;
-    }
-
-    public void setGrantedTo(Student grantedTo) {
-        this.grantedTo = grantedTo;
-    }
 }

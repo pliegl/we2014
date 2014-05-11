@@ -23,6 +23,7 @@ public enum PersistenceService {
     /**
      * Merge the given entity. If there is not entity with the given ID yet, create a new one. Otherwise update the
      * existin gone
+     *
      * @param entity
      * @param <T>
      * @return
@@ -34,16 +35,27 @@ public enum PersistenceService {
 
     /**
      * Persist the given entity. Throws an error in case the entity already exists
+     *
      * @param entity
      */
     public void persist(BaseEntity entity) {
+
         em().persist(entity);
+    }
+
+    /**
+     * Remove the entity
+     * @param entity
+     */
+    public void remove(BaseEntity entity) {
+        em().remove(entity);
     }
 
 
     /**
      * Search for the entity of the given type with the given id
-     * @param id The ID of the entity
+     *
+     * @param id          The ID of the entity
      * @param entityClazz The class of the entity
      * @param <T>
      * @return
@@ -55,6 +67,7 @@ public enum PersistenceService {
 
     /**
      * Get a llist of all entities of a certain type
+     *
      * @param entityClazz
      * @param <E>
      * @return
@@ -67,21 +80,23 @@ public enum PersistenceService {
 
     /**
      * Get a student based on his unique registration number
+     *
      * @param registrationNumber
      * @return
      */
     public Student getStudent(String registrationNumber) {
         Criteria c = ((Session) JPA.em().getDelegate()).createCriteria(Student.class);
         c.add(Restrictions.eq("registrationNumber", registrationNumber));
-        return (Student)c.uniqueResult();
+        return (Student) c.uniqueResult();
     }
 
 
     /**
      * Return the entity manager
+     *
      * @return
      */
-    private EntityManager em() {
+    public EntityManager em() {
         return JPA.em();
     }
 

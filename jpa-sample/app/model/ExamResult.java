@@ -13,12 +13,54 @@ public class ExamResult extends BaseEntity {
     @Temporal(TemporalType.DATE)
     private Date examDate;
 
+    private String exam;
+
     private int mark;
+
+    @ManyToOne
+    private Student student;
+
 
     @Transient
     private String examLocation;
 
+    public Date getExamDate() {
+        return examDate;
+    }
 
-    //Getter and setters omitted
+    public void setExamDate(Date examDate) {
+        this.examDate = examDate;
+    }
 
+    public int getMark() {
+        return mark;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public void setMark(int mark) {
+        this.mark = mark;
+    }
+
+    public String getExamLocation() {
+        return examLocation;
+    }
+
+    public void setExamLocation(String examLocation) {
+        this.examLocation = examLocation;
+    }
+
+    public String getExam() {
+        return exam;
+    }
+
+    public void setExam(String exam) {
+        this.exam = exam;
+    }
 }
