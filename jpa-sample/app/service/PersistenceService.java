@@ -1,6 +1,7 @@
 package service;
 
 import model.BaseEntity;
+import model.ExamResult;
 import model.Student;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -66,7 +67,7 @@ public enum PersistenceService {
 
 
     /**
-     * Get a llist of all entities of a certain type
+     * Get a list of all entities of a certain type
      *
      * @param entityClazz
      * @param <E>
@@ -77,6 +78,28 @@ public enum PersistenceService {
         return c.list();
     }
 
+    /**
+     * Get a list of positive exams for a certain student
+     * @param student
+     * @return
+     */
+    public List<ExamResult> getPositiveExamResults(Student student) {
+        Criteria c = ((Session) JPA.em().getDelegate()).createCriteria(Student.class);
+        c.createCriteria("examResults").add(Restrictions.lt("mark", 5));
+        return c.list();
+    }
+
+
+    /**
+     * Get a list of negative exams for a certain student
+     * @param student
+     * @return
+     */
+    public List<ExamResult> getNegativeExamResults(Student student) {
+        Criteria c = ((Session) JPA.em().getDelegate()).createCriteria(Student.class);
+        c.createCriteria("examResults").add(Restrictions.eq("mark", 5));
+        return c.list();
+    }
 
     /**
      * Get a student based on his unique registration number

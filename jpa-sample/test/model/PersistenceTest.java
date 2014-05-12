@@ -210,13 +210,24 @@ public class PersistenceTest extends BaseTest {
                     examResult1.setMark(2);
                     s.addExamResult(examResult1);
 
+                    ExamResult examResult2 = new ExamResult();
+                    examResult2.setExam("Model Engineering");
+                    examResult2.setMark(5);
+                    s.addExamResult(examResult2);
+
+
                     //Store the student
                     persistence.persist(s);
 
                     //Get the student and check if the exam results are correctly persisted
                     s = persistence.getStudent("1699394");
-                    assertEquals(2, s.getExamResults().size());
+                    assertEquals(3, s.getExamResults().size());
 
+                    //There shall be two correct examresult
+                    assertEquals(2, persistence.getPositiveExamResults(s).size());
+
+                    //There shall be 1 negative examresult
+                    assertEquals(1, persistence.getNegativeExamResults(s).size());
 
 
                 }
