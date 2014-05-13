@@ -5,12 +5,12 @@ Samples used during the Web Engineering lecture series 2014 at Vienna University
 
 ###Sample 1: we-restful-service
 
-An example for a RESTful student Web Service, based on JAX-RS. An introduction to RESTful Web Services is given on the following slide deck: [http://ecosio.com/blog/2014/05/07/Einfuehrung-in-serviceorientierte-Architekturen-und-Web-Services/]
+An example for a RESTful student Web Service, based on JAX-RS. An introduction to RESTful Web Services is given on the following slide deck: [http://ecosio.com/blog/2014/05/07/Einfuehrung-in-serviceorientierte-Architekturen-und-Web-Services/](http://ecosio.com/blog/2014/05/07/Einfuehrung-in-serviceorientierte-Architekturen-und-Web-Services/)
 
 
 ###Sample 2: we-webservice
 
-An example for a very simple Arithmetic Web Service, based on JAX-WS. An introdcution to JAX-WS is given on the following slide deck: [http://ecosio.com/blog/2014/05/07/Einfuehrung-in-serviceorientierte-Architekturen-und-Web-Services/]
+An example for a very simple Arithmetic Web Service, based on JAX-WS. An introdcution to JAX-WS is given on the following slide deck: [http://ecosio.com/blog/2014/05/07/Einfuehrung-in-serviceorientierte-Architekturen-und-Web-Services/](http://ecosio.com/blog/2014/05/07/Einfuehrung-in-serviceorientierte-Architekturen-und-Web-Services/)
 
 ###Sample 3: jpa-sample
 
