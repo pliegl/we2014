@@ -16,5 +16,5 @@ An example for a very simple Arithmetic Web Service, based on JAX-WS. An introdc
 
 An example [Play application](http://www.playframework.com) using JPA and Hibernate. The application does not contain any UI logic, but concentrates on how JPA relationships are correctly modeled. The following DB structure is used for the samples:
 
-![Sample ER diagram](https://github.com/pliegl/we2014/blob/master/img/Sample_ER_Diagram.jpg "Sample ER diagram")
+![Sample ER diagram](https://github.com/pliegl/we2014/blob/master/img/Sample_ER_Diagram.jpg?raw=true "Sample ER diagram")
 
