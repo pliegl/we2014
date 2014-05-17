@@ -9,6 +9,8 @@ import java.util.List;
 /**
  * Student domain class
  */
+@NamedQuery(name="findAllStudents",
+        query="SELECT s FROM Student s")
 @Entity
 public class Student extends BaseEntity {
 

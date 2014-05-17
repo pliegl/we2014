@@ -9,6 +9,7 @@ import org.hibernate.criterion.Restrictions;
 import play.db.jpa.JPA;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
@@ -111,6 +112,29 @@ public enum PersistenceService {
         Criteria c = ((Session) JPA.em().getDelegate()).createCriteria(Student.class);
         c.add(Restrictions.eq("registrationNumber", registrationNumber));
         return (Student) c.uniqueResult();
+    }
+
+    /**
+     * Get a student by his name. Shows how to use a JPQL query
+     * @param studentName
+     * @return
+     */
+    public List<Student> getStudentByName(String studentName) {
+        TypedQuery<Student> studentTypedQuery = em().createQuery("SELECT s FROM Student s WHERE s.name LIKE :studentName", Student.class);
+
+        studentTypedQuery.setParameter("studentName", studentName);
+
+        return studentTypedQuery.getResultList();
+    }
+
+
+    /**
+     * Return a list of all students using a NamedQuery
+     * @return
+     */
+    public List<Student> getAllStudents() {
+        List<Student> students = em().createNamedQuery("findAllStudents", Student.class).getResultList();
+        return students;
     }
 
 

@@ -61,6 +61,17 @@ public class PersistenceTest extends BaseTest {
                 assertTrue(students.size() == 1);
                 student = students.get(0);
                 assertEquals("0123565", student.getRegistrationNumber());
+
+                //Retrieve a list of all students using a NamedQuery
+                assertTrue(persistence.getAllStudents().size() == 1);
+
+                //There must be exactly one student name Max Mustermann
+                List<Student> studentList = persistence.getStudentByName("Max Mustermann");
+                assertEquals(1, studentList.size());
+
+                //There must be no student named foo
+                studentList = persistence.getStudentByName("foo");
+                assertEquals(0, studentList.size());
             }
         });
 
