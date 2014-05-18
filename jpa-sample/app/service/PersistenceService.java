@@ -12,6 +12,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.ParameterExpression;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 /**
@@ -41,7 +43,6 @@ public enum PersistenceService {
      * @param entity
      */
     public void persist(BaseEntity entity) {
-
         em().persist(entity);
     }
 
@@ -100,18 +101,28 @@ public enum PersistenceService {
         Criteria c = ((Session) JPA.em().getDelegate()).createCriteria(Student.class);
         c.createCriteria("examResults").add(Restrictions.eq("mark", 5));
         return c.list();
+
     }
 
     /**
      * Get a student based on his unique registration number
+     * Uses the JPA Criteria Query
      *
      * @param registrationNumber
      * @return
      */
     public Student getStudent(String registrationNumber) {
-        Criteria c = ((Session) JPA.em().getDelegate()).createCriteria(Student.class);
-        c.add(Restrictions.eq("registrationNumber", registrationNumber));
-        return (Student) c.uniqueResult();
+
+        CriteriaBuilder cb = em().getCriteriaBuilder();
+        CriteriaQuery<Student> criteriaQuery = cb.createQuery(Student.class);
+        Root<Student> s = criteriaQuery.from(Student.class);
+        ParameterExpression<String> parameter = cb.parameter(String.class);
+        criteriaQuery.select(s).where(cb.equal(s.get("registrationNumber"), parameter));
+
+        TypedQuery<Student> typedQuery = em().createQuery(criteriaQuery);
+        typedQuery.setParameter(parameter, registrationNumber);
+        return typedQuery.getSingleResult();
+
     }
 
     /**
