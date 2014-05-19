@@ -190,10 +190,56 @@ public class PersistenceTest extends BaseTest {
             fail();
         }
 
-
-
     }
 
+
+
+    @Test
+    public void testPersistSameObjectTwice() {
+
+        try  {
+            JPA.withTransaction(new F.Callback0() {
+                @Override
+                public void invoke() throws Throwable {
+
+                    //Persist an empty student
+                    Student s = new Student();
+                    s.setName("foo");
+                    s.setRegistrationNumber("bar");
+                    persistence.persist(s);
+
+                    //Get the managed student
+                    s = persistence.getStudent("bar");
+
+                    //Add an exam result
+                    ExamResult examResult = new ExamResult();
+                    examResult.setMark(2);
+                    examResult.setExam("Web Engineering");
+                    s.addExamResult(examResult);
+
+                    //Try to persist the student again (although it is already persisted)
+                    //Nothing happens with the student itself, but the changes to
+                    //the examresult must be propagated
+                    persistence.persist(s);
+
+                    //Exam result is expected to be managed as well (i.e., it has a PK)
+                    assertNotNull(s.getExamResults().get(0).getId());
+                    Logger.info("Examresult stored with id {}", s.getExamResults().get(0).getId());
+
+                    //Detach the student
+                    persistence.detach(s);
+
+                    //Try to persist it again (causes an exception)
+                    persistence.persist(s);
+
+                }
+            });
+            fail();
+        }
+        catch (Exception e) {
+            Logger.info(e.getMessage(), e);
+        }
+    }
 
 
     @Test

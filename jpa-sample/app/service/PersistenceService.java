@@ -54,6 +54,14 @@ public enum PersistenceService {
         em().remove(entity);
     }
 
+    /**
+     * Detach the given entity from the persistence context
+     * @param entity
+     */
+    public void detach(BaseEntity entity) {
+        em().detach(entity);
+    }
+
 
     /**
      * Search for the entity of the given type with the given id
