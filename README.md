@@ -1,18 +1,18 @@
-##Web Engineering 2014
+## Web Engineering 2014
 
 
 Samples used during the Web Engineering lecture series 2014 at Vienna University of Technology.
 
-###Sample 1: we-restful-service
+### Sample 1: we-restful-service
 
 An example for a RESTful student Web Service, based on JAX-RS. An introduction to RESTful Web Services is given on the following slide deck: [http://ecosio.com/blog/2014/05/07/Einfuehrung-in-serviceorientierte-Architekturen-und-Web-Services/](http://ecosio.com/blog/2014/05/07/Einfuehrung-in-serviceorientierte-Architekturen-und-Web-Services/)
 
 
-###Sample 2: we-webservice
+### Sample 2: we-webservice
 
 An example for a very simple Arithmetic Web Service, based on JAX-WS. An introdcution to JAX-WS is given on the following slide deck: [http://ecosio.com/blog/2014/05/07/Einfuehrung-in-serviceorientierte-Architekturen-und-Web-Services/](http://ecosio.com/blog/2014/05/07/Einfuehrung-in-serviceorientierte-Architekturen-und-Web-Services/)
 
-###Sample 3: jpa-sample
+### Sample 3: jpa-sample
 
 An example [Play application](http://www.playframework.com) using JPA and Hibernate. The application does not contain any UI logic, but concentrates on how JPA relationships are correctly modeled. A general introduction to JPA and Hibernate is given on the following slide deck: [http://www.slideshare.net/ecosio/introduction-to-jpa-and-hibernate-using](http://www.slideshare.net/ecosio/introduction-to-jpa-and-hibernate-using)
 
